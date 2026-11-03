@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="Confirma los datos de entrega y registra tu pago de demostración en respira+.">
+  <title>Pago | respira+</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
+</head>
+<body data-page="checkout" data-private="true">
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+  <header class="site-header"><nav class="nav container" aria-label="Navegación principal">
+    <a class="brand" href="/index.html" aria-label="respira+ - Inicio"><span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 42 42" fill="none"><path d="M5 22h9l4-9 7 19 5-11h7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="21" cy="21" r="18" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="brand-word">respira<span>+</span><small>TECNOLOGÍA RESPIRATORIA</small></span></a>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Abrir menú">☰</button>
+    <div class="nav-menu" id="primary-menu"><a class="nav-link" href="/index.html">Inicio</a><a class="nav-link" href="/productos.html">Productos</a><a class="nav-link" href="/nosotros.html">Nosotros</a><a class="nav-link" href="/favoritos.html">Favoritos</a><a class="nav-link" href="/carrito.html">Carrito</a><a class="nav-account" id="account-open" href="/cuenta.html">Iniciar sesión</a></div>
+    <a class="cart-trigger" href="/carrito.html" aria-label="Abrir carrito de compras"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 4h2l2 11a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.5L22 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.2" fill="currentColor"/><circle cx="18" cy="20" r="1.2" fill="currentColor"/></svg><span>Carrito</span><span class="cart-count" id="cart-count" aria-live="polite">0</span></a>
+  </nav></header>
+  <main id="main-content" class="container">
+    <header class="page-intro"><span class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> FINALIZAR PEDIDO · MODO DEMOSTRACIÓN</span><h1>Pago</h1><p>Confirma los datos de entrega y registra el pedido. No se realizará un cobro real.</p></header>
+    <p class="private-note" id="private-status" role="status" aria-live="polite">Comprobando tu sesión...</p>
+    <form class="checkout-card form-stack" id="checkout-form" autocomplete="off" novalidate>
+      <section class="checkout-summary" id="checkout-summary" aria-label="Resumen del pedido"></section>
+      <div class="form-grid">
+        <label class="field field-wide">Nombre de la cuenta<input name="nombre" type="text" autocomplete="off" readonly required minlength="2" maxlength="120"><span class="field-error" data-error-for="nombre"></span></label>
+        <label class="field">Correo de la cuenta<input name="correo" type="email" autocomplete="off" readonly required maxlength="160"><span class="field-error" data-error-for="correo"></span></label>
+        <label class="field">Cédula (solo validación local)<input name="cedula" type="text" inputmode="numeric" autocomplete="off" required minlength="6" maxlength="15" pattern="[0-9]{6,15}" aria-describedby="cedula-error" placeholder="6 a 15 dígitos"><span class="field-error" id="cedula-error" data-error-for="cedula"></span></label>
+        <label class="field">Teléfono (solo números)<input name="telefono" type="text" inputmode="numeric" autocomplete="off" required minlength="7" maxlength="15" pattern="[0-9]{7,15}" placeholder="7 a 15 dígitos"><span class="field-error" data-error-for="telefono"></span></label>
+        <label class="field field-wide">Dirección de entrega<input name="direccion" type="text" autocomplete="off" required minlength="5" maxlength="220" placeholder="Calle, número, ciudad"><span class="field-error" data-error-for="direccion"></span></label>
+      </div>
+      <fieldset class="payment-fields">
+        <legend>Datos de pago de demostración</legend>
+        <label class="field field-wide">Nombre del titular<input name="titular" type="text" autocomplete="off" required maxlength="80" placeholder="Nombre del titular"><span class="field-error" data-error-for="titular"></span></label>
+        <label class="field field-wide">Identificador de pago<input id="f_doc_num" name="f_doc_num" type="password" inputmode="numeric" autocomplete="off" required maxlength="16" placeholder="16 dígitos" aria-describedby="f_doc_num_error"><span class="field-error" id="f_doc_num_error" data-error-for="f_doc_num"></span></label>
+        <label class="field">Vigencia<input id="f_exp_date" name="f_exp_date" type="text" inputmode="numeric" autocomplete="off" required maxlength="5" placeholder="MM/AA" aria-describedby="f_exp_date_error"><span class="field-error" id="f_exp_date_error" data-error-for="f_exp_date"></span></label>
+        <label class="field">Código de verificación<input id="f_sec_code" name="f_sec_code" type="password" inputmode="numeric" autocomplete="off" required maxlength="4" placeholder="3 o 4 dígitos" aria-describedby="f_sec_code_error"><span class="field-error" id="f_sec_code_error" data-error-for="f_sec_code"></span></label>
+      </fieldset>
+      <div class="checkout-total"><span>Total a pagar</span><strong id="checkout-total">$0.00</strong></div>
+      <p class="form-status" id="form-status" role="alert" aria-live="assertive"></p>
+      <p class="checkout-success hidden" id="checkout-success" role="alert">Pago realizado con éxito</p>
+      <button class="button button-primary button-full" id="pay-button" type="submit">Pagar $0.00</button>
+      <a class="text-button" href="/carrito.html">Volver al carrito</a>
+    </form>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="/index.html"><span class="brand-word">respira<span>+</span><small>TECNOLOGÍA RESPIRATORIA</small></span></a><p>Innovación y tecnología para cuidar cada respiro de tu vida.</p><section class="footer-contact" aria-labelledby="footer-contact-title"><h2 id="footer-contact-title">Contacto</h2><a href="mailto:respira+@gmail.com"><span>Correo</span>respira+@gmail.com</a><a href="tel:0962651829"><span>Contacto</span>0962651829</a><p><span>Dirección</span>Jose maría guerrero y quito norte</p></section><span class="copyright">© <span id="current-year"></span> respira+. Información de compra en modo demostración.</span></div></footer>
+  <dialog class="success-dialog" id="success-dialog" aria-labelledby="success-title" aria-describedby="success-message">
+    <span class="success-mark" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="m13 33 12 12 26-27" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="eyebrow">TRANSACCIÓN SIMULADA</span>
+    <h2 id="success-title">¡Pago realizado con éxito!</h2>
+    <p id="success-message">Tu pedido ha sido registrado y procesado correctamente.</p>
+    <div class="success-order" id="success-order"></div>
+    <button class="button button-primary button-full" id="success-close" type="button">Ver mi cuenta</button>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
